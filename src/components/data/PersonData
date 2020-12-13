@@ -1,0 +1,36 @@
+
+import React, { Component } from "react";
+import userPic from '../../images/user.png'; // Tell webpack this JS file uses this image
+
+class PersonData extends Component {
+    render() {
+      return (
+          <div>
+           {/* <div className="card">
+                <img className="card-img-top" src={userPic} alt="Card image cap" />
+                <div className="card-body">
+                    <h5 className="card-title" >{user.name}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">{user.email}</h6>
+                    <h6 className="card-subtitle mb-2 text-muted">{user.address.city}</h6>
+                    <h6 className="card-subtitle mb-2 text-muted">{user.phone}</h6>
+                    <h6 className="card-subtitle mb-2 text-muted">{user.website}</h6>
+                </div>
+      </div>}*/}
+          </div>
+      );
+    }
+    state = {
+        person: []
+    };
+    
+    componentDidMount() {
+        fetch('http://jsonplaceholder.typicode.com/users/{1}')
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({ users: JSON.stringify(data) })
+        })
+        .catch(console.log)
+    } 
+}
+
+export default PersonData; 

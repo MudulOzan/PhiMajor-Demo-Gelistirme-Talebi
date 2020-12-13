@@ -1,23 +1,31 @@
-import React from 'react'
-import userPic from '../images/user.png'; // Tell webpack this JS file uses this image
+import React, { Component } from 'react';
+import './../App.css';
+import UsersData from './data/UsersData';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Users = ({ users } : { users:any }) => {
-  return (
-    <div>
-        { console.log(users) }
+class Users extends Component {
+  render() {
+    return (
+      <div className="App">
+        <UsersData users={this.state.users} />
+      </div>
+    )
+  }
+  
+  state = {
+      users: []
+  };
 
+  componentDidMount() {
+    fetch('http://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then((data) => {
+    
+      this.setState({ users: data })
+    })
+    .catch(console.log)
+  }
+  
+}
 
-      {users.map((user : any, i : any) => (
-        <div className="card">
-        <img className="card-img-top" src={userPic} alt="Card image cap" />
-          <div className="card-body">
-            <h5 className="card-title">{user.name}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{user.email}</h6>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-};
-
-export default Users
+export default Users;

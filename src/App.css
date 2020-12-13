@@ -1,6 +1,8 @@
 .card {
   width: 18rem;
   float: left;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
 .card-img-top {
@@ -8,4 +10,9 @@
   margin-right: auto;
   margin-top: 2rem;
   width: 50% !important;
+}
+
+.card-title:hover {
+  color: blue;
+  cursor: pointer;
 }
